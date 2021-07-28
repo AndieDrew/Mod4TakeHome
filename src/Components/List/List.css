@@ -1,0 +1,13 @@
+
+
+  .list-container {
+    background-color: #686868;
+    overflow: scroll;
+    padding: 10px 30px;
+    border-radius: 8px;
+  }
+
+li {
+  padding: 3px;
+  font-weight: bolder;
+} 

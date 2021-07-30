@@ -18,12 +18,6 @@ export default function App() {
         setPrevArticles(data.results)
       })
       .catch(error => setError(error))
-    // getArticles()
-    // .then(data => {
-    //   setArticles(data.results)
-    //   setPrevArticles(data.results)
-    // })
-    // .catch(error => setError(error))
   }, [])
 
   const filterArticles = (input) => {

@@ -1,4 +1,5 @@
 export const getArticles = () => {
-    return fetch(`https://api.nytimes.com/svc/topstories/v2/home.json?api-key=2nkaf71wIvRqwjKb8y8gaCCl1qzcnna4`)
+  const apiKey = process.env.REACT_APP_API_KEY
+    return fetch(`https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${apiKey}`)
     .then(response => response.json())
   }

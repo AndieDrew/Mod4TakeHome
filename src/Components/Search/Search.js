@@ -6,7 +6,6 @@ export default function Search( { filter } ) {
 
     const handleClick = (e) => {
         e.preventDefault()
-        console.log(searchRef.current.value)
         filter(searchRef.current.value)
         if(searchRef.current.value && icon === '🔍') {
             changeIcon()

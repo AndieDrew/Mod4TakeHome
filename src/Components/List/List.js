@@ -20,7 +20,8 @@ export default function List( { articles } ) {
 
     return (
         <div>
-            <h1>Articles</h1>
+            <h2>Top Articles</h2>
+            <h3>Courtesy of The New York Times</h3>
               <div className='list-container'>
                 <ul>
                     {listItems}

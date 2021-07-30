@@ -5,12 +5,13 @@ import './List.css'
 export default function List( props ) {
 
     const listItems = props.articles.map((item, index) => {
+        const path = item.uri.split('/').pop()
         return (
          <li
            key={item.uri}
            className='listItem'
            id={item.url}>
-            <Link  to={`/${item.uri}`} key={index}>
+            <Link  to={`/${path}`} key={index}>
                 {item.title}
             </Link>
          </li>

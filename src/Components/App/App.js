@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Switch, Route } from "react-router-dom"
+import { Switch, Route, Redirect } from "react-router-dom"
 import './App.css'
 import { getArticles } from "../../Util/api-calls"
 import Search from '../Search/Search'
@@ -8,20 +8,26 @@ import Details from '../Details/Details'
 
 export default function App() {
   const [articles, setArticles] = useState([])
+  const [previousArticles, setPrevArticles] = useState([])
   const [error, setError] = useState("")
 
   useEffect(() => {
     getArticles()
     .then(data => {
       setArticles(data.results)
+      setPrevArticles(data.results)
     })
     .catch(error => setError(error))
   }, [])
 
   const filterArticles = (input) => {
-    setArticles(articles.filter(article => article.title.toLowerCase().includes(input.toLowerCase())))
-    
+    if(input) {
+      setArticles(articles.filter(article => article.title.toLowerCase().includes(input.toLowerCase())))
+    }  else  {
+      setArticles(previousArticles)
+    }
   }
+  
 
   return (
     <main>
@@ -38,10 +44,17 @@ export default function App() {
             )}
           />
 
-        <Route path={`/:uri`}
-              render={() => (
-                  <Details articles={articles}/>
-                )}
+        <Route exact path={`/:uri`}
+              render={({ match }) => {
+                  const uri = match.params.uri
+                  const foundArticle = articles.find(article =>
+                      article.uri.split('/').pop() === uri
+                      )
+                      if(foundArticle) {
+                  return <Details foundArticle={foundArticle}/>
+                      }
+                  return <Redirect to='/' />
+                }}
         />
       </Switch>
     </main>

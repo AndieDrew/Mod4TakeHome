@@ -4,16 +4,6 @@ import { Link } from 'react-router-dom'
 
 export default function Details({ foundArticle }) {
 
-//   const [currentArticle, setCurrentArticle] = useState(null)
-
-//   useEffect(() => {
-//     const foundArticle = props.articles.find(
-//       (article) =>
-//         article.uri.split("/")[3] === window.location.href.split("/")[6]
-//     );
-//     setCurrentArticle(foundArticle);
-//   }, [])
-
   return (
     <div>
       {!foundArticle &&

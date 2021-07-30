@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './List.css'
 
-export default function List( props ) {
+export default function List( { articles } ) {
 
-    const listItems = props.articles.map((item, index) => {
+    const listItems = articles.map((item, index) => {
         const path = item.uri.split('/').pop()
         return (
          <li
@@ -20,7 +20,7 @@ export default function List( props ) {
 
     return (
         <div>
-            <h1>List</h1>
+            <h1>Articles</h1>
               <div className='list-container'>
                 <ul>
                     {listItems}

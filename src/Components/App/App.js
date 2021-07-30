@@ -12,12 +12,18 @@ export default function App() {
   const [error, setError] = useState("")
 
   useEffect(() => {
-    getArticles()
-    .then(data => {
-      setArticles(data.results)
-      setPrevArticles(data.results)
-    })
-    .catch(error => setError(error))
+        getArticles()
+      .then(data => {
+        setArticles(data.results)
+        setPrevArticles(data.results)
+      })
+      .catch(error => setError(error))
+    // getArticles()
+    // .then(data => {
+    //   setArticles(data.results)
+    //   setPrevArticles(data.results)
+    // })
+    // .catch(error => setError(error))
   }, [])
 
   const filterArticles = (input) => {
